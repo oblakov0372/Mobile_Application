@@ -10,12 +10,12 @@ import android.os.Bundle;
 import com.example.studytracker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
     ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ReplaceFragment(new HomeFragment());
@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
                 ReplaceFragment(new HomeFragment());
             } else if (item.getItemId() == R.id.profile) {
                 ReplaceFragment(new ProfileFragment());
-            } else if (item.getItemId() == R.id.settings) {
-                ReplaceFragment(new SettingsFragment());
+            } else if (item.getItemId() == R.id.tasks) {
+                ReplaceFragment(new TasksFragment());
             }
             return true;
         });
