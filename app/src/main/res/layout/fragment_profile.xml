@@ -1,0 +1,235 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".ProfileFragment">
+
+        <TextView
+            android:id="@+id/profileTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profileTitle"
+            android:textStyle="bold"
+            android:textSize="28sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <!-- Name -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/nameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NameLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp"
+            />
+
+        <!-- Faculty -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/facultyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/facultyLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/facultyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Specialization -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/specializationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/specializationLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/specializationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Faculty Number -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/facultyNumberLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/facultyNumberLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/facultyNumberText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Course -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/courseLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/courseLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/courseText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Enrollment Status -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/enrollmentStatusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enrollmentStatusLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/enrollmentStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Tuition Fee Type -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/tuitionFeeTypeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tuitionFeeTypeLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/tuitionFeeTypeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- EGN/Personal ID -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/egnLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/egnLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/egnText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Country -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/countryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/country"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/countryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Success/GPA -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#888888" />
+
+        <TextView
+            android:id="@+id/successLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/successLabel"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/successText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp" />
+    </LinearLayout>
+</ScrollView>

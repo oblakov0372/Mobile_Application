@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">StudyTracker</string>
+    <string name="tasks">Tasks</string>
+    <string name="open_schedule">Open Schedule</string>
+    <string name="country">Държава</string>
+    <string name="profileTitle">Профил</string>
+    <string name="NameLabel">Име</string>
+    <string name="facultyLabel">Факултет</string>
+    <string name="specializationLabel">Специалност</string>
+    <string name="facultyNumberLabel">Факултетен номер</string>
+    <string name="courseLabel">Курс</string>
+    <string name="enrollmentStatusLabel">Статус на обучение</string>
+    <string name="tuitionFeeTypeLabel">Вид такса</string>
+    <string name="egnLabel">ЕГН/ЛНЧ</string>
+    <string name="successLabel">Успех</string>
+</resources>
