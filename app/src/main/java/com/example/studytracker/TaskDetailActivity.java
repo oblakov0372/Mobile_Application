@@ -5,30 +5,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
+import androidx.lifecycle.Observer;
 
 public class TaskDetailActivity extends AppCompatActivity {
 
-    private TaskAdapter taskAdapter;
     private TaskRepository taskRepository;
     private TaskEntity currentTask;
     private EditText editTextTitle;
     private EditText editTextDescription;
     private EditText editTextDeadline;
     private EditText editTextSubject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_task_detail);
+
         editTextTitle = findViewById(R.id.editTextTitle);
         editTextDescription = findViewById(R.id.editTextDescription);
         editTextDeadline = findViewById(R.id.editTextDeadline);
         editTextSubject = findViewById(R.id.editTextSubject);
+
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,19 +38,23 @@ public class TaskDetailActivity extends AppCompatActivity {
 
         taskRepository = new TaskRepository(this);
 
-        // Получите данные таска из Intent
         Intent intent = getIntent();
         int taskId = intent.getIntExtra("taskId", -1);
 
-        // Получите данные таска из репозитория
-        currentTask = taskRepository.getTaskById(taskId);
-        if (currentTask != null) {
-            editTextTitle.setText(currentTask.getTitle());
-            editTextDescription.setText(currentTask.getDescription());
-            editTextDeadline.setText(String.valueOf(currentTask.getDeadline()));
-            editTextSubject.setText(currentTask.getSubject());
+        if (taskId != -1) {
+            taskRepository.getTaskById(taskId).observe(this, new Observer<TaskEntity>() {
+                @Override
+                public void onChanged(TaskEntity task) {
+                    if (task != null) {
+                        currentTask = task;
+                        editTextTitle.setText(task.getTitle());
+                        editTextDescription.setText(task.getDescription());
+                        editTextDeadline.setText(String.valueOf(task.getDeadline())); // Убедитесь, что формат верный
+                        editTextSubject.setText(task.getSubject());
+                    }
+                }
+            });
         }
-        // Инициализируйте элементы интерфейса и отобразите данные таска
 
         Button btnDeleteTask = findViewById(R.id.btnDeleteTask);
         btnDeleteTask.setOnClickListener(new View.OnClickListener() {
@@ -71,33 +74,55 @@ public class TaskDetailActivity extends AppCompatActivity {
     }
 
     private void deleteTask() {
-        // Вызовите метод для удаления таска из репозитория
-        taskRepository.deleteTask(currentTask);
-
-        // Закройте активность и вернитесь к предыдущей
+        if (currentTask != null) {
+            taskRepository.deleteTask(currentTask);
+        }
         finish();
     }
 
     private void editTask() {
-        String updatedTitle = editTextTitle.getText().toString();
-        String updatedDescription = editTextDescription.getText().toString();
+        if (validateInputs()) {
+            String updatedTitle = editTextTitle.getText().toString().trim();
+            String updatedDescription = editTextDescription.getText().toString().trim();
+            String updatedDeadline = editTextDeadline.getText().toString().trim();
+            String updatedSubject = editTextSubject.getText().toString().trim();
 
-        // Получите deadline как long (это простой пример, вам нужно реализовать логику преобразования из текста в long)
-        String updatedDeadline = editTextDeadline.getText().toString();
+            currentTask.setTitle(updatedTitle);
+            currentTask.setDescription(updatedDescription);
+            currentTask.setDeadline(updatedDeadline); // Убедитесь, что формат верный
+            currentTask.setSubject(updatedSubject);
 
-        String updatedSubject = editTextSubject.getText().toString();
-
-        // Обновите данные таска
-        currentTask.setTitle(updatedTitle);
-        currentTask.setDescription(updatedDescription);
-        currentTask.setDeadline(updatedDeadline);
-        currentTask.setSubject(updatedSubject);
-
-        // Вызовите метод для редактирования таска в репозитории
-        taskRepository.updateTask(currentTask);
-
-        // Закройте активность и вернитесь к предыдущей
-        finish();
+            taskRepository.updateTask(currentTask);
+            finish();
+        }
     }
 
+    private boolean validateInputs() {
+        boolean isValid = true;
+
+        if (editTextTitle.getText().toString().trim().isEmpty()) {
+            editTextTitle.setError("This field is required");
+            isValid = false;
+        }
+
+        if (editTextDescription.getText().toString().trim().isEmpty()) {
+            editTextDescription.setError("This field is required");
+            isValid = false;
+        }
+
+        if (editTextDeadline.getText().toString().trim().isEmpty()) {
+            editTextDeadline.setError("This field is required");
+            isValid = false;
+        } else if (!editTextDeadline.getText().toString().trim().matches("\\d{4}-\\d{2}-\\d{2}")) {
+            editTextDeadline.setError("The date must be in the format yyyy-mm-dd");
+            isValid = false;
+        }
+
+        if (editTextSubject.getText().toString().trim().isEmpty()) {
+            editTextSubject.setError("This field is required");
+            isValid = false;
+        }
+
+        return isValid;
+    }
 }

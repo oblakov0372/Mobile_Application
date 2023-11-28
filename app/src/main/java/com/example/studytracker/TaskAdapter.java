@@ -56,9 +56,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     }
 
     public void setTaskList(List<TaskEntity> newTaskList) {
-        taskList.clear();
-        taskList.addAll(newTaskList);
-        notifyDataSetChanged();
+        if (taskList == null) {
+            taskList = newTaskList;
+            notifyItemRangeInserted(0, newTaskList.size());
+        } else {
+            // Здесь можно реализовать более сложную логику для определения измененных элементов
+            // и использовать notifyItemInserted(), notifyItemRemoved(), notifyItemChanged() и т.д.
+            taskList.clear();
+            taskList.addAll(newTaskList);
+            notifyDataSetChanged();
+        }
     }
 
     class TaskViewHolder extends RecyclerView.ViewHolder {

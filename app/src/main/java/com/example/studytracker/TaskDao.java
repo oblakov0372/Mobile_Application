@@ -1,5 +1,6 @@
 package com.example.studytracker;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -11,10 +12,10 @@ import java.util.List;
 @Dao
 public interface TaskDao {
     @Query("SELECT * FROM tasks")
-    List<TaskEntity> getAllTasks();
+    LiveData<List<TaskEntity>> getAllTasks();
 
     @Query("SELECT * FROM tasks WHERE id = :taskId")
-    TaskEntity getTaskById(int taskId);
+    LiveData<TaskEntity> getTaskById(int taskId);
 
     @Insert
     void insertTask(TaskEntity task);

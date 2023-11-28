@@ -21,7 +21,7 @@
         android:id="@+id/editTextDeadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Deadline" />
+        android:hint="Deadline (yyyy-mm-dd)" />
     <EditText
         android:id="@+id/editTextSubject"
         android:layout_width="match_parent"

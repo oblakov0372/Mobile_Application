@@ -1,30 +1,147 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/calendarTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tasks"
-        android:textSize="36sp"
+        android:text="Routes and Addresses"
+        android:textSize="32sp"
         android:textAlignment="center" />
 
-    <CalendarView
-        android:id="@+id/tasksCalendar"
+    <!-- Блок для Ректората -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/scheduleButtonToLink"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/open_schedule"
-        android:textSize="20sp"
-        android:layout_gravity="center" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="РЕКТОРАТ\nгр. Пловдив ул. Цар Асен 24"
+            android:textSize="14sp"/>
 
+        <Button
+            android:id="@+id/rectoratButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Маршрут"/>
+    </LinearLayout>
+
+    <!-- Блок для Нова Сграда -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="НОВА СГРАДА\nгр. Пловдив бул. България 236"
+            android:textSize="14sp"/>
+
+        <Button
+            android:id="@+id/novaSgradaButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Маршрут"/>
+    </LinearLayout>
+
+    <!-- Биологический факультет -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="БИОЛОГИЧЕСКИ ФАКУЛТЕТ\nгр. Пловдив ул. Тодор Самодумов №2"/>
+        <Button
+            android:id="@+id/buttonBiologicalFaculty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Маршрут"/>
+    </LinearLayout>
+
+    <!-- Център по технологии -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ЦЕНТЪР ПО ТЕХНОЛОГИИ\nгр. Пловдив ул. Костаки Пеев №21"/>
+        <Button
+            android:id="@+id/buttonTechnologyCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Маршрут"/>
+    </LinearLayout>
+
+    <!-- Учебен център по молекулярна биология -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="МОЛЕКУЛЯРНА БИОЛОГИЯ\nгр. Пловдив ул. „Архитект Камен Петков“ 3"/>
+        <Button
+            android:id="@+id/buttonMolecularBiologyCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Маршрут"/>
+    </LinearLayout>
+
+    <!-- Учебна спортно-тренировъчна зала -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="УЧЕБНА СПОРТНО-ТРЕНИРОВЪЧНА ЗАЛА\nгр. Пловдив бул. България 236А"/>
+        <Button
+            android:id="@+id/buttonTrainingHall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Маршрут"/>
+    </LinearLayout>
+
+    <!-- Спортен комплекс "Академик" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="СПОРТЕН КОМПЛЕКС АКАДЕМИК\nгр. Пловдив ул. „Найчо Цанов“ 678"/>
+        <Button
+            android:id="@+id/buttonSportsComplex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Маршрут"/>
+    </LinearLayout>
 </LinearLayout>

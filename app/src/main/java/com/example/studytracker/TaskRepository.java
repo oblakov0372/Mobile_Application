@@ -1,79 +1,42 @@
 package com.example.studytracker;
 
 import android.content.Context;
-import android.os.AsyncTask;
+
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TaskRepository {
     private TaskDao taskDao;
+    private LiveData<List<TaskEntity>> allTasks;
+    private ExecutorService executorService;
 
     public TaskRepository(Context context) {
         AppDatabase database = MyApplication.getDatabase();
         taskDao = database.taskDao();
+        allTasks = (LiveData<List<TaskEntity>>) taskDao.getAllTasks();
+        executorService = Executors.newSingleThreadExecutor();
     }
 
-    public List<TaskEntity> getAllTasks() {
-        return taskDao.getAllTasks();
+    public LiveData<List<TaskEntity>> getAllTasks() {
+        return allTasks;
     }
 
-    public TaskEntity getTaskById(int taskId) {
+    public LiveData<TaskEntity> getTaskById(int taskId) {
         return taskDao.getTaskById(taskId);
     }
 
     public void insertTask(TaskEntity task) {
-        new InsertTaskAsyncTask(taskDao).execute(task);
+        executorService.execute(() -> taskDao.insertTask(task));
     }
 
     public void updateTask(TaskEntity task) {
-        new UpdateTaskAsyncTask(taskDao).execute(task);
+        executorService.execute(() -> taskDao.updateTask(task));
     }
 
     public void deleteTask(TaskEntity task) {
-        new DeleteTaskAsyncTask(taskDao).execute(task);
+        executorService.execute(() -> taskDao.deleteTask(task));
     }
-
-    // Асинхронные задачи для выполнения операций в фоновом потоке
-    private static class InsertTaskAsyncTask extends AsyncTask<TaskEntity, Void, Void> {
-        private TaskDao taskDao;
-
-        InsertTaskAsyncTask(TaskDao taskDao) {
-            this.taskDao = taskDao;
-        }
-
-        @Override
-        protected Void doInBackground(TaskEntity... tasks) {
-            taskDao.insertTask(tasks[0]);
-            return null;
-        }
-    }
-
-    private static class UpdateTaskAsyncTask extends AsyncTask<TaskEntity, Void, Void> {
-        private TaskDao taskDao;
-
-        UpdateTaskAsyncTask(TaskDao taskDao) {
-            this.taskDao = taskDao;
-        }
-
-        @Override
-        protected Void doInBackground(TaskEntity... tasks) {
-            taskDao.updateTask(tasks[0]);
-            return null;
-        }
-    }
-
-    private static class DeleteTaskAsyncTask extends AsyncTask<TaskEntity, Void, Void> {
-        private TaskDao taskDao;
-
-        DeleteTaskAsyncTask(TaskDao taskDao) {
-            this.taskDao = taskDao;
-        }
-
-        @Override
-        protected Void doInBackground(TaskEntity... tasks) {
-            taskDao.deleteTask(tasks[0]);
-            return null;
-        }
-    }
-
 }

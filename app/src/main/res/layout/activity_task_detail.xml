@@ -37,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextDescription"
         android:layout_marginTop="16dp"
-        android:hint="Deadline"/>
+        android:hint="Deadline (yyyy-mm-dd)"
+        android:inputType="date"/>
 
     <!-- EditText для редактирования предмета -->
     <EditText
